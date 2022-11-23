@@ -8,10 +8,12 @@ const TaskListComponents = () => {
 
     //Estado de componente
     const [tasks, setTasks] = useState(defaultTask);
+    const [loading, setLoading] = useState(true);
 
     //Control de ciclo de vida
     useEffect(() => {
         console.log('Modificacion');
+        setLoading(false);
         return () => {
             console.log('Finaliza');
         };

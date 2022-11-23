@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Task } from '../../model/task.class'
+import { Task } from '../../model/task.class';
+
+//La hoja de estilos
+import '../../styles/task.scss';
 
 
 function TaskComponent ({task}) {
+
+    useEffect(() => {
+        console.log('Created Task')
+        return () => {
+            console.log(`Task: ${task.name} is going to unmount`);
+        }
+    }, [task]);
+
+
     return (
         <div>
-            <p>
+            <p className='task-name'>
                 Name: { task.name}
             </p>
             <p>
