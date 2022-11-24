@@ -5,3 +5,12 @@
 table{
     color: black;
 }
+
+tr{
+   
+    margin: 0 15px 5px 15px;
+}
+
+table tr:nth-child(even) {
+	background-color: #F7F7F7;
+}

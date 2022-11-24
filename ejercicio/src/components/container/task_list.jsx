@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Task } from '../../model/task.class';
 import Taskform from '../pure/form/taskForm';
 import TaskComponent from '../pure/task';
@@ -12,24 +12,12 @@ const TaskListComponents = () => {
 
     //Estado de componente
     const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3, defaultTask4]);
-    const [loading, setLoading] = useState(true);
-
-    //Control de ciclo de vida
-    useEffect(() => {
-        console.log('Modificacion');
-        setLoading(false);
-        return () => {
-            console.log('Finaliza');
-        };
-    }, [tasks]);
 
     function modeTask(task){
         console.log('Complete this Task:', task);
         const index = tasks.indexOf(task);
         const tempTasks = [...tasks];
         tempTasks[index].changeMode = !tempTasks[index].changeMode;
-        // We update the state of the component with the new list of tasks and it will update the
-        // Iteration of the tasks in order to show the task updated
         setTasks(tempTasks);
     }
 
@@ -43,7 +31,6 @@ const TaskListComponents = () => {
 
     function addTask(task){
         console.log('Detele this Task:', task);
-        const index = tasks.indexOf(task);
         const tempTasks = [...tasks];
         tempTasks.push(task);
         setTasks(tempTasks);
@@ -88,6 +75,8 @@ const TaskListComponents = () => {
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div className='card' style={{marginTop:'25px', padding:'15px'}}>
                     <Taskform add={addTask}></Taskform>
                 </div>
             </div>

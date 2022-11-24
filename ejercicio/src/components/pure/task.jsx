@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Task } from '../../model/task.class';
-
 //La hoja de estilos
 import '../../styles/task.scss';
-
 
 function TaskComponent ({task, mode, remove}) {
 
@@ -28,9 +26,9 @@ function TaskComponent ({task, mode, remove}) {
 
     return (
         <tr className='fw-normal'>
-            <th>
+            <td>
                 <span className='ms-2'>{ task.name }</span>
-            </th>
+            </td>
             <td>
                 <span className='align-middle'>{ task.lastname }</span>
             </td>
@@ -48,12 +46,10 @@ function TaskComponent ({task, mode, remove}) {
     );
 };
 
-
 TaskComponent.propTypes = {
     task: PropTypes.instanceOf(Task).isRequired,
     mode: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired
 };
-
 
 export default TaskComponent;
