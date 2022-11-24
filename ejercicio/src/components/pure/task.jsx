@@ -17,20 +17,34 @@ function TaskComponent ({task}) {
 
 
     return (
-        <div>
-            <p className='task-name'>
-                Name: { task.name}
-            </p>
-            <p>
-                Last name: { task.lastname }
-            </p>
-            <p>
-                Email: { task.email }
-            </p>
-            <p>
-                State: { task.mode ? 'Conectado' : 'Desconectado' }
-            </p>
-        </div>
+        <tr className='fw-normal'>
+            <th>
+                <span className='ms-2'>{ task.name }</span>
+            </th>
+            <td>
+                <span className='align-middle'>{ task.lastname }</span>
+            </td>
+            <td>
+                <span className='align-middle'>{ task.email }</span>
+            </td>
+            <td>
+                <span className='align-middle'>{ task.mode ? 'Conectado' : 'Desconectado' }</span>
+            </td>
+        </tr>
+        // <div>
+        //     <p className='task-name'>
+        //         Name: { task.name}
+        //     </p>
+        //     <p>
+        //         Last name: { task.lastname }
+        //     </p>
+        //     <p>
+        //         Email: { task.email }
+        //     </p>
+        //     <p>
+        //         State: { task.mode ? 'Conectado' : 'Desconectado' }
+        //     </p>
+        // </div>
     );
 };
 
