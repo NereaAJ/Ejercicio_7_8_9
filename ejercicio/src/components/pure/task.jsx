@@ -6,7 +6,7 @@ import { Task } from '../../model/task.class';
 import '../../styles/task.scss';
 
 
-function TaskComponent ({task}) {
+function TaskComponent ({task, mode, remove}) {
 
     useEffect(() => {
         console.log('Creada Task')
@@ -19,10 +19,10 @@ function TaskComponent ({task}) {
      * Devuelve el estado
      */
      function taskModeIcon(){
-        if(task.mode){
-            return (<i className='bi-toggle-on' style={{color: 'green'}}></i>)
+        if(task.changeMode){
+            return (<i onClick={() => mode(task)} className='bi-toggle-on task-action' style={{color: 'green'}}></i>)
         }else{
-            return (<i className='bi-toggle-off' style={{color: 'grey'}}></i>)
+            return (<i onClick={() => mode(task)} className='bi-toggle-off task-action' style={{color: 'grey'}}></i>)
         }
     }
 
@@ -42,7 +42,7 @@ function TaskComponent ({task}) {
                 {taskModeIcon()}
             </td>
             <td>
-                <i className='bi-trash' style={{color: 'tomato'}}></i>
+            <i className='bi-trash task-action' style={{color: 'tomato'}} onClick={() => remove(task)}></i>
             </td>
         </tr>
     );
@@ -50,7 +50,9 @@ function TaskComponent ({task}) {
 
 
 TaskComponent.propTypes = {
-    task: PropTypes.instanceOf(Task)
+    task: PropTypes.instanceOf(Task).isRequired,
+    mode: PropTypes.func.isRequired,
+    remove: PropTypes.func.isRequired
 };
 
 

@@ -23,11 +23,32 @@ const TaskListComponents = () => {
         };
     }, [tasks]);
 
-    const changeCompleted = (id) => {
-        console.log('TODO: Cambiar estado de una tarea')
+    function modeTask(task){
+        console.log('Complete this Task:', task);
+        const index = tasks.indexOf(task);
+        const tempTasks = [...tasks];
+        tempTasks[index].changeMode = !tempTasks[index].changeMode;
+        // We update the state of the component with the new list of tasks and it will update the
+        // Iteration of the tasks in order to show the task updated
+        setTasks(tempTasks);
     }
 
-   
+    function deleteTask(task){
+        console.log('Detele this Task:', task);
+        const index = tasks.indexOf(task);
+        const tempTasks = [...tasks];
+        tempTasks.splice(index,1);
+        setTasks(tempTasks);
+    }
+
+    function addTask(task){
+        console.log('Detele this Task:', task);
+        const index = tasks.indexOf(task);
+        const tempTasks = [...tasks];
+        tempTasks.push(task);
+        setTasks(tempTasks);
+    }
+
     return (
         <div>
             <div className='col-12'>
@@ -46,7 +67,7 @@ const TaskListComponents = () => {
                                     <th scope='col'> Name </th>
                                     <th scope='col'> Last name </th>
                                     <th scope='col'> Email </th>
-                                    <th scope='col-2'> State </th>
+                                    <th scope='col'> State </th>
                                     <th scope='col'> Delete </th>
                                 </tr>
                             </thead>
@@ -56,6 +77,8 @@ const TaskListComponents = () => {
                                             <TaskComponent 
                                                 key={ index }
                                                 task={ task }
+                                                mode={modeTask}
+                                                remove = {deleteTask}
                                             >
                                             </TaskComponent>
                                         )
@@ -65,7 +88,7 @@ const TaskListComponents = () => {
                             </tbody>
                         </table>
                     </div>
-                    <Taskform></Taskform>
+                    <Taskform add={addTask}></Taskform>
                 </div>
             </div>
         </div>
