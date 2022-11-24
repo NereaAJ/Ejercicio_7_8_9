@@ -9,12 +9,22 @@ import '../../styles/task.scss';
 function TaskComponent ({task}) {
 
     useEffect(() => {
-        console.log('Created Task')
+        console.log('Creada Task')
         return () => {
-            console.log(`Task: ${task.name} is going to unmount`);
+            console.log(`Task: ${task.name} se muestra`);
         }
     }, [task]);
 
+    /**
+     * Devuelve el estado
+     */
+     function taskModeIcon(){
+        if(task.mode){
+            return (<i className='bi-toggle-on' style={{color: 'green'}}></i>)
+        }else{
+            return (<i className='bi-toggle-off' style={{color: 'grey'}}></i>)
+        }
+    }
 
     return (
         <tr className='fw-normal'>
@@ -28,23 +38,13 @@ function TaskComponent ({task}) {
                 <span className='align-middle'>{ task.email }</span>
             </td>
             <td>
-                <span className='align-middle'>{ task.mode ? 'Conectado' : 'Desconectado' }</span>
+                {/* <span className='align-middle'>{ task.mode ? 'Conectado' : 'Desconectado' }</span> */}
+                {taskModeIcon()}
+            </td>
+            <td>
+                <i className='bi-trash' style={{color: 'tomato'}}></i>
             </td>
         </tr>
-        // <div>
-        //     <p className='task-name'>
-        //         Name: { task.name}
-        //     </p>
-        //     <p>
-        //         Last name: { task.lastname }
-        //     </p>
-        //     <p>
-        //         Email: { task.email }
-        //     </p>
-        //     <p>
-        //         State: { task.mode ? 'Conectado' : 'Desconectado' }
-        //     </p>
-        // </div>
     );
 };
 
